@@ -90,7 +90,7 @@ public class CallApi {
         SSLContext context = SSLContext.getInstance(TLS_VERSION);
         context.init(keyManagerFactory.getKeyManagers(), trustAllCerts, new SecureRandom());
 
-        // Bắt tay với server để đảm bảo SSL context hoạt động
+
         SSLSocketFactory sslSocketFactory = context.getSocketFactory();
         SSLSocket sslSocket = (SSLSocket) sslSocketFactory.createSocket(ipServer, port);
         sslSocket.startHandshake();
@@ -235,7 +235,8 @@ public class CallApi {
                 JSONObject jsonResult = convertDataResponse(httpResponse);
                 log.info("Response từ getSAD: {}", jsonResult.toString());
                 if (jsonResult.getInt("status_code") == 0) {
-                    // Notify user
+
+
                     JSONObject notifyObj = new JSONObject();
                     notifyObj.put("flag", 1);
                     String url1 = "https://" + ip + ":" + port + "/idp/users/list/notify";
